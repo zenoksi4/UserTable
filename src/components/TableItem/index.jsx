@@ -14,7 +14,7 @@ const TableItem = () => {
   
     const handleSaveClick = () => {
       setIsEditing(false);
-      // Здесь вы можете отправить данные на сервер или обновить состояние приложения.
+      
     }
   
     return (

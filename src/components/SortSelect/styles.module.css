@@ -1,0 +1,36 @@
+.sort{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.sortSelect{
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2b90c3c2;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20vh;
+}
+
+.sortArrow{
+    margin-left: 10px;
+    background-color: #2b90c3c2;
+    padding: 8px;
+    font-size: 17px;
+    border-radius: 50px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.sortArrow:hover{
+    opacity: 0.8;
+}
+.sortArrow:active{
+    opacity: 0.6;
+}
