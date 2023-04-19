@@ -13,7 +13,7 @@ const CreateRow = () => {
 
     {showForm ? (
         <>
-            <div>
+            <div className={styles.fieldsContainer}>
             <input placeholder='Name' type="text" id="name" name="name" />
             <br />
             <input placeholder='Email' type="email" id="email" name="email" />

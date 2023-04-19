@@ -1,0 +1,17 @@
+.contentTable{
+    min-width: 700px;
+    max-width: 1000px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    border-collapse: collapse;
+    overflow: hidden;
+
+}
+
+.headerTable tr{
+    background-color: #2b90c3c2;
+    color: #ffffff;
+}
+

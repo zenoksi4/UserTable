@@ -1,0 +1,39 @@
+.tableItem input{
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.tableItem td {
+    padding: 15px;
+}
+
+.ageInput{
+    width: 50px;
+}
+
+.nameInput{
+    width: 60px;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;
+}
+
+.icon{
+    font-size: 26px;
+    color: #0b0b0b;
+    cursor: pointer;
+}
+
+.icon:hover{
+    opacity: 0.8;
+}
+
+.icon:active{
+    opacity: 0.6;
+}

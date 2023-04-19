@@ -8,7 +8,11 @@ body {
   min-height: 100vh;
   width: 100vw;
 }
-
+.table td,
+.table th,
+.table thead th {
+  border: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
