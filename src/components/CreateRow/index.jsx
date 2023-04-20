@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import styles from './styles.module.css'
 import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { createUser } from '../../store/users/usersSlice';
+import styles from './styles.module.css'
+
 
 const CreateRow = () => {
     const [showForm, setShowForm] = useState(false);
@@ -36,8 +37,12 @@ const CreateRow = () => {
     const handleCreate = () => {
       if (age <= 0) {
         setAge(null);
+        return
       }
       isValid && name && email && age && dispatch(createUser({name, email, age}));
+      setName('');
+      setEmail('');
+      setAge(0)
     }
     
 
@@ -51,7 +56,8 @@ const CreateRow = () => {
               <input
                 placeholder='Name' 
                 type="text" id="name" 
-                name="name" 
+                name="name"
+                value={name} 
                 onChange={(e) => setName(e.target.value)}
               />
               <br />
@@ -61,6 +67,7 @@ const CreateRow = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={email}
                 onChange={handleEmailInput}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
@@ -73,6 +80,7 @@ const CreateRow = () => {
                 type="number" 
                 id="age" 
                 name="age" 
+                value={age}
                 onChange={handleAgeInput}
               />
 

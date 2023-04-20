@@ -1,13 +1,34 @@
 import { useState } from 'react';
-import styles from './styles.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { sortUsers } from '../../store/users/usersSlice';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import styles from './styles.module.css'
+
+
 
 const SortSelect = () => {
-    const [isSelect, setIsSelect] = useState(false);
+    const [option, setOption] = useState('');
     const [isDesc, setIsDesc] = useState(true);
+    const { users } = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+
 
     const handleSelectSort = (e) => {
-        e.target.value ? setIsSelect(true): setIsSelect(false)
+        const option = e.target.value
+        setOption(option);
+        dispatch(sortUsers({option, isDesc}));
+
+    }
+
+
+    const handleArrowDown = () => {
+        setIsDesc(true);
+        dispatch(sortUsers({option, isDesc: true})); 
+    }
+    
+    const handleArrowUp = () => {
+        setIsDesc(false);
+        dispatch(sortUsers({option, isDesc: false})); 
     }
 
     return (
@@ -15,17 +36,20 @@ const SortSelect = () => {
             <select className={styles.sortSelect} onChange={ (e) => {handleSelectSort(e)} }>
                 <option  value="">Sort by </option>
 
-                <option value='id'>
-                            id
-                </option>
+                {Object.keys(users[0]).map((key)=> (
+                    <option value={key}>
+                        {key}
+                    </option>
+                ))}
+
             </select>
-            {isSelect &&
+            {option &&
                 <>
                     { isDesc ?
-                            <AiOutlineArrowDown onClick={() => setIsDesc(!isDesc)} className={styles.sortArrow}/>
-                        :
-                            <AiOutlineArrowUp onClick={() => setIsDesc(!isDesc)} className={styles.sortArrow}/>
+                            <AiOutlineArrowUp onClick={handleArrowUp} className={styles.sortArrow}/>
 
+                        :
+                            <AiOutlineArrowDown onClick={handleArrowDown} className={styles.sortArrow}/>
                     }
                 </>
             }   

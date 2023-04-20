@@ -27,10 +27,37 @@ const createUser = (state, action) => {
 }
 
 
+const sortUsers = (state, action) => {
+    const {option, isDesc} = action.payload
+
+    if (option === 'id') {
+        isDesc ?
+            state.users.sort((a, b) => a.id - b.id)
+        :
+            state.users.sort((a, b) => b.id - a.id)
+    } else if (option === 'name') {
+        isDesc ?
+            state.users.sort((a, b) => a.name.localeCompare(b.name))
+        :
+            state.users.sort((a, b) => b.name.localeCompare(a.name))
+    } else if (option === 'email') {
+        isDesc ?
+        state.users.sort((a, b) => a.email.localeCompare(b.email))
+    :
+        state.users.sort((a, b) => b.email.localeCompare(a.email))
+    } else if (option === 'age') {
+        isDesc ?
+        state.users.sort((a, b) => a.age - b.age)
+    :
+        state.users.sort((a, b) => b.age - a.age)
+    }
+}
+
 const usersService = {
     editUser,
     deleteUser,
-    createUser
+    createUser,
+    sortUsers
 }
 
 export default usersService;

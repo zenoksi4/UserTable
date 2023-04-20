@@ -18,6 +18,12 @@ const initialUsers = [{
         name: 'John',
         email: 'john@example.com',
         age: 29
+    },
+    {
+        id: Math.floor(Math.random() * 9000) + 1,
+        name: 'Amanda',
+        email: 'amanda@example.com',
+        age: 39
     }
 ]
 
@@ -29,10 +35,11 @@ const usersSlice = createSlice({
     reducers: {
         editUser: usersService.editUser,
         deleteUser: usersService.deleteUser,
-        createUser: usersService.createUser
+        createUser: usersService.createUser,
+        sortUsers: usersService.sortUsers
     }
 })  
 
-export const { editUser, deleteUser, createUser } = usersSlice.actions;
+export const { editUser, deleteUser, createUser, sortUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;

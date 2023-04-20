@@ -27,6 +27,8 @@
     border-radius: 50px;
     color: #ffffff;
     cursor: pointer;
+    user-select: none;
+
 }
 .sortArrow:hover{
     opacity: 0.8;
