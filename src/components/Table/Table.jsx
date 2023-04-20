@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import TableItem from '../TableItem';
 import styles from './styles.module.css'
 
 const Table = () => {
+  const { users } = useSelector((state) => state.users);
+  console.log(users)
   return (
     <table className={styles.contentTable}>
         <thead className={styles.headerTable}>
@@ -15,11 +18,9 @@ const Table = () => {
         </thead>
 
         <tbody>
-        <TableItem/>
-        <TableItem/>
-        <TableItem/>
-
-
+          {users.map((user)=> (
+              <TableItem id={user.id} name={user.name} email={user.email} age={user.age}/>
+          ))}
 
         </tbody>
     </table>

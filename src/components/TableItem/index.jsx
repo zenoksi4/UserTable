@@ -2,41 +2,48 @@ import { useState } from 'react';
 import styles from './styles.module.css'
 import { AiFillEdit, AiFillDelete, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";  
 
-const TableItem = () => {
+const TableItem = ({id, name, email, age}) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [name, setName] = useState('Иван');
-    const [email, setEmail] = useState('ivan@example.com');
-    const [age, setAge] = useState(25);
+    const [nameField, setNameField] = useState(name);
+    const [emailField, setEmailField] = useState(email);
+    const [ageField, setAgeField] = useState(age);
   
-    const handleEditClick = () => {
+    const handleEdit = () => {
       setIsEditing(!isEditing);
     }
   
-    const handleSaveClick = () => {
+    const handleSave = () => {
       setIsEditing(false);
       
+    }
+
+    const handleClose = () => {
+        setIsEditing(false)
+        setNameField(name);
+        setEmailField(email);
+        setAgeField(age);
     }
   
     return (
         <tr className={styles.tableItem}>
-            <td>{Math.floor(Math.random() * 9000) + 1}</td>
+            <td>{id}</td>
             <td>
                 {isEditing ? (
-                    <input className={styles.nameInput} value={name} onChange={(e) => setName(e.target.value)} />
+                    <input className={styles.nameInput} value={nameField} onChange={(e) => setNameField(e.target.value)} />
                 ) : (
                     name
                 )}
             </td>
             <td>
                 {isEditing ? (
-                    <input className={styles.emailInput} value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input className={styles.emailInput} value={emailField} onChange={(e) => setEmailField(e.target.value)} />
                 ) : (
                     email
                 )}
             </td>
             <td>
                 {isEditing ? (
-                    <input className={styles.ageInput} type='number' value={age} onChange={(e) => setAge(e.target.value)} />
+                    <input className={styles.ageInput} type='number' value={ageField} onChange={(e) => setAgeField(e.target.value)} />
                 ) : (
                     age
                 )}
@@ -44,13 +51,13 @@ const TableItem = () => {
             <td className={styles.icons}>
                 {isEditing ? (
                     <>
-                        <AiOutlineCheck className={styles.icon} onClick={handleSaveClick}/>
-                        <AiOutlineClose className={styles.icon} onClick={handleEditClick}/>
+                        <AiOutlineCheck className={styles.icon} onClick={handleSave}/>
+                        <AiOutlineClose className={styles.icon} onClick={handleClose}/>
                     </>
                 ) : (
                     <>
-                        <AiFillEdit className={styles.icon} onClick={handleEditClick} />
-                        <AiFillDelete className={styles.icon} />
+                        <AiFillEdit className={styles.icon} onClick={handleEdit} />
+                        <AiFillDelete className={styles.icon}  />
                     </>
 
                 )}
