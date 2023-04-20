@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import usersService from "../services/usersService";
 
 const initialUsers = [{
         id: Math.floor(Math.random() * 9000) + 1,
@@ -24,7 +25,12 @@ const usersSlice = createSlice({
     name: 'users',
     initialState: {
         users: initialUsers,
+    },
+    reducers: {
+        editUser: usersService.editUser
     }
-})
+})  
+
+export const { editUser } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import styles from './styles.module.css'
 import { AiFillEdit, AiFillDelete, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";  
+import { useDispatch } from 'react-redux';
+import { editUser } from '../../store/users/usersSlice';
 
 const TableItem = ({id, name, email, age}) => {
     const [isEditing, setIsEditing] = useState(false);
     const [nameField, setNameField] = useState(name);
     const [emailField, setEmailField] = useState(email);
     const [ageField, setAgeField] = useState(age);
+    const dispatch = useDispatch()
   
     const handleEdit = () => {
-      setIsEditing(!isEditing);
+        setIsEditing(!isEditing);
     }
   
     const handleSave = () => {
-      setIsEditing(false);
+        dispatch(editUser({id, nameField, emailField, ageField}))
+
+        setIsEditing(false);
       
     }
 

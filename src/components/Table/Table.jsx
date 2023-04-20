@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 
 const Table = () => {
   const { users } = useSelector((state) => state.users);
-  console.log(users)
+
   return (
     <table className={styles.contentTable}>
         <thead className={styles.headerTable}>
