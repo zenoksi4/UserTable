@@ -67,3 +67,7 @@
 .icon:active{
     opacity: 0.6;
 }
+
+.valid{
+    box-shadow: 0 0 4px 1px red;
+}
