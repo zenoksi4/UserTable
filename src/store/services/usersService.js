@@ -8,9 +8,17 @@ const editUser = (state, action) => {
 
 }
 
+const deleteUser = (state, action) => {
+    const {id} = action.payload
+    state.users = state.users.filter((user) => (
+        user.id !== id
+    ))
+}
+
 
 const usersService = {
     editUser,
+    deleteUser
 }
 
 export default usersService;

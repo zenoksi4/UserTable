@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './styles.module.css'
 import { AiFillEdit, AiFillDelete, AiOutlineCheck, AiOutlineClose } from "react-icons/ai";  
 import { useDispatch } from 'react-redux';
-import { editUser } from '../../store/users/usersSlice';
+import { deleteUser, editUser } from '../../store/users/usersSlice';
 
 const TableItem = ({id, name, email, age}) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -13,6 +13,10 @@ const TableItem = ({id, name, email, age}) => {
   
     const handleEdit = () => {
         setIsEditing(!isEditing);
+    }
+
+    const handleDelete = () => {
+        dispatch(deleteUser({id}))
     }
   
     const handleSave = () => {
@@ -62,7 +66,7 @@ const TableItem = ({id, name, email, age}) => {
                 ) : (
                     <>
                         <AiFillEdit className={styles.icon} onClick={handleEdit} />
-                        <AiFillDelete className={styles.icon}  />
+                        <AiFillDelete className={styles.icon}  onClick={handleDelete}/>
                     </>
 
                 )}

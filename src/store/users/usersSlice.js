@@ -27,10 +27,11 @@ const usersSlice = createSlice({
         users: initialUsers,
     },
     reducers: {
-        editUser: usersService.editUser
+        editUser: usersService.editUser,
+        deleteUser: usersService.deleteUser
     }
 })  
 
-export const { editUser } = usersSlice.actions;
+export const { editUser, deleteUser } = usersSlice.actions;
 
 export default usersSlice.reducer;
